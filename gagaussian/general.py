@@ -94,21 +94,20 @@ class Distribution(DistributionInterface, ABC):
         """
         return self.stdev
 
-    def read(self, file: str) -> NoReturn:
+    def read(self, file_name: str) -> NoReturn:
         """Method to read data from a text file.
 
         Args:
-            file (str): Name of a file to read.
+            file_name (str): Name of a file to read.
 
         Returns:
             NoReturn
         """
-        with open(file) as file:
-            data = []
-            line = file.readline()
-            with line:
-                data.append(int(line))
-                line = file.readline()
-        file.close()
+        data = []
+
+        with open(file_name) as file:
+            while line := file.readline():
+                line = int(line.rstrip())
+                data.append(line)
 
         self.data = data

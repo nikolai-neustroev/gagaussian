@@ -6,9 +6,9 @@ from .general import Distribution
 
 
 class Gaussian(Distribution):
-    def __init__(self):
+    def __init__(self, mean=0., stdev=1.):
         """Gaussian distribution class."""
-        super().__init__()
+        super().__init__(mean, stdev)
 
     def __add__(self, other) -> 'Gaussian':
         """Method to add together two Gaussian distributions.
