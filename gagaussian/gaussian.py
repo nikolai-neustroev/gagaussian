@@ -1,3 +1,5 @@
+import math
+import statistics
 from typing import List, NoReturn
 
 from .general import Distribution
@@ -17,7 +19,10 @@ class Gaussian(Distribution):
         Returns:
             Gaussian: Gaussian distribution.
         """
-        pass
+        total = Gaussian()
+        total.set_mean(self.mean + other.mean)
+        total.set_stdev(math.sqrt(self.stdev ** 2 + other.stdev ** 2))
+        return total
 
     def __repr__(self) -> str:
         """Method to print the characteristics of the Gaussian distribution.
@@ -25,7 +30,7 @@ class Gaussian(Distribution):
         Returns:
             str: characteristics of the Gaussian.
         """
-        pass
+        return f"mean {self.mean}, standard deviation {self.stdev}"
 
     def calculate_mean(self) -> float:
         """Method to calculate the mean value of the distribution.
@@ -33,7 +38,9 @@ class Gaussian(Distribution):
         Returns:
             float: The mean value of the distribution.
         """
-        pass
+        new_mean = float(statistics.mean(self.data))
+        self.set_mean(new_mean)
+        return new_mean
 
     def calculate_stdev(self) -> float:
         """Method to calculate the standard deviation value
@@ -42,7 +49,9 @@ class Gaussian(Distribution):
         Returns:
             float: The standard deviation value of the distribution.
         """
-        pass
+        new_stdev = float(statistics.stdev(self.data))
+        self.set_stdev(new_stdev)
+        return new_stdev
 
     def pdf(self, x: float) -> float:
         """Probability density function.
@@ -53,17 +62,19 @@ class Gaussian(Distribution):
         Returns:
             float: Probability density.
         """
-        pass
+        return (1.0 / (self.stdev * math.sqrt(2 * math.pi))) \
+               * math.exp(-0.5 * ((x - self.mean) / self.stdev) ** 2)
 
-    def plot(self) -> NoReturn:
+    def plot(self) -> NoReturn:  # TODO: implement with matplotlib
         """Plotting histogram.
 
         Returns:
             NoReturn
         """
-        pass
+        raise NotImplementedError
 
     def plot_pdf(self, n_spaces=50) -> (List[float], List[float]):
+        # TODO: implement with matplotlib
         """Plotting probability density function.
 
         Args:
@@ -73,4 +84,4 @@ class Gaussian(Distribution):
             list: x values for the pdf plot
             list: y values for the pdf plot
         """
-        pass
+        raise NotImplementedError
