@@ -28,7 +28,7 @@ class DistributionInterface(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def pdf(self):
+    def pdf(self, x: float) -> float:
         raise NotImplementedError
 
     @abstractmethod
