@@ -4,7 +4,7 @@ from typing import NoReturn
 
 class DistributionInterface(ABC):
     @abstractmethod
-    def __init__(self, mean: float, stdev: float):
+    def __init__(self, mean: float, stdev: float, *args, **kwargs):
         raise NotImplementedError
 
     @abstractmethod
@@ -20,28 +20,28 @@ class DistributionInterface(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def calculate_mean(self):
+    def calculate_mean(self, *args, **kwargs):
         raise NotImplementedError
 
     @abstractmethod
-    def calculate_stdev(self):
+    def calculate_stdev(self, *args, **kwargs):
         raise NotImplementedError
 
     @abstractmethod
-    def pdf(self, x: float) -> float:
+    def pdf(self, *args, **kwargs) -> float:
         raise NotImplementedError
 
     @abstractmethod
-    def plot(self):
+    def plot(self, *args, **kwargs):
         raise NotImplementedError
 
     @abstractmethod
-    def plot_pdf(self):
+    def plot_pdf(self, *args, **kwargs):
         raise NotImplementedError
 
 
 class Distribution(DistributionInterface, ABC):
-    def __init__(self, mean=0., stdev=1.):
+    def __init__(self, mean=0., stdev=1., *args, **kwargs):
         """General distribution parent class.
 
         Args:
