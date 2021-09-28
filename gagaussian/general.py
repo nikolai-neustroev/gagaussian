@@ -48,9 +48,51 @@ class Distribution(DistributionInterface, ABC):
             mean (float): The mean value of the distribution.
             stdev (float): The standard deviation of the distribution.
         """
-        self.mean = mean
-        self.stdev = stdev
+        self.mean = None
+        self.set_mean(mean)
+
+        self.stdev = None
+        self.set_stdev(stdev)
+
         self.data = []
+
+    def set_mean(self, new_value: float) -> NoReturn:
+        """Mutator method realizes encapsulation of mean attribute.
+
+        Args:
+            new_value (float): New value of mean attribute.
+
+        Returns:
+            NoReturn
+        """
+        self.mean = new_value
+
+    def get_mean(self) -> float:
+        """Accessor method realizes encapsulation of mean attribute.
+
+        Returns:
+            float: The mean value of the distribution.
+        """
+        return self.mean
+
+    def set_stdev(self, new_value: float) -> NoReturn:
+        """Mutator method realizes encapsulation of stdev attribute.
+
+        Args:
+            new_value (float): New value of stdev attribute.
+
+        Returns:
+            NoReturn
+        """
+        self.stdev = new_value
+
+    def get_stdev(self) -> float:
+        """Accessor method realizes encapsulation of stdev attribute.
+
+        Returns:
+            float: The stdev value of the distribution.
+        """
+        return self.stdev
 
     def read(self, file: str) -> NoReturn:
         """Method to read data from a text file.
