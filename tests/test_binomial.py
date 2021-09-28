@@ -1,10 +1,12 @@
 from unittest import TestCase, main
 
+from gagaussian import Binomial
+
 
 class TestBinomial(TestCase):
     def setUp(self):
         self.binomial = Binomial(0.4, 20)
-        self.binomial.read_data_file('numbers_binomial.txt')
+        self.binomial.read('numbers_binomial.txt')
 
     def test_initialization(self):
         self.assertEqual(self.binomial.p, 0.4, 'p value incorrect')
