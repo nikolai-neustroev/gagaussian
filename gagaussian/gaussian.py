@@ -20,8 +20,9 @@ class Gaussian(Distribution):
             Gaussian: Gaussian distribution.
         """
         total = Gaussian()
-        total.set_mean(self.mean + other.mean)
-        total.set_stdev(math.sqrt(self.stdev ** 2 + other.stdev ** 2))
+        total.set_mean(self.get_mean() + other.get_mean())
+        total.set_stdev(math.sqrt(self.get_stdev() ** 2
+                                  + other.get_stdev() ** 2))
         return total
 
     def __repr__(self) -> str:
@@ -30,7 +31,7 @@ class Gaussian(Distribution):
         Returns:
             str: characteristics of the Gaussian.
         """
-        return f"mean {self.mean}, standard deviation {self.stdev}"
+        return f"mean {self.get_mean()}, standard deviation {self.get_stdev()}"
 
     def calculate_mean(self) -> float:
         """Method to calculate the mean value of the distribution.
@@ -62,8 +63,8 @@ class Gaussian(Distribution):
         Returns:
             float: Probability density.
         """
-        return (1.0 / (self.stdev * math.sqrt(2 * math.pi))) \
-               * math.exp(-0.5 * ((x - self.mean) / self.stdev) ** 2)
+        return (1.0 / (self.get_stdev() * math.sqrt(2 * math.pi))) * \
+               math.exp(-0.5 * ((x - self.get_mean()) / self.get_stdev()) ** 2)
 
     def plot(self) -> NoReturn:  # TODO: implement with matplotlib
         """Plotting histogram.
