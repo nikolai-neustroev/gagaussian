@@ -94,6 +94,14 @@ class Distribution(DistributionInterface, ABC):
         """
         return self.stdev
 
+    def get_data(self) -> list:
+        """Accessor method realizes encapsulation of data attribute.
+
+        Returns:
+            list: Data sample.
+        """
+        return self.data
+
     def read(self, file_name: str) -> NoReturn:
         """Method to read data from a text file.
 
