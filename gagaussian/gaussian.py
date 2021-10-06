@@ -39,7 +39,7 @@ class Gaussian(Distribution):
         Returns:
             float: The mean value of the distribution.
         """
-        new_mean = float(statistics.mean(self.data))
+        new_mean = float(statistics.mean(self.get_data()))
         self.set_mean(new_mean)
         return new_mean
 
@@ -50,7 +50,7 @@ class Gaussian(Distribution):
         Returns:
             float: The standard deviation value of the distribution.
         """
-        new_stdev = float(statistics.stdev(self.data))
+        new_stdev = float(statistics.stdev(self.get_data()))
         self.set_stdev(new_stdev)
         return new_stdev
 

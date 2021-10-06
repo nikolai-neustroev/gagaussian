@@ -106,9 +106,10 @@ class Binomial(Distribution):
             float: the p value
             float: the n value
         """
-        if len(self.data) > 0:
-            self.set_n(len(self.data))
-            self.set_p(len([k for k in self.data if k > 0]) / len(self.data))
+        if len(self.get_data()) > 0:
+            self.set_n(len(self.get_data()))
+            self.set_p(len([k for k in self.get_data() if k > 0]) /
+                       len(self.get_data()))
             self.calculate_mean()
             self.calculate_stdev()
             return self.get_p(), self.get_n()
